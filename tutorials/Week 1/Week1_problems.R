@@ -25,7 +25,7 @@ sum(y)/length(y)
 mean(y)
 
 # (3) find sum of demeaned values
-y - mean(y)
+y - mean(y) #Update
 
 # (4) calculate sum of squared error
 deviations <- y - mean(y)
