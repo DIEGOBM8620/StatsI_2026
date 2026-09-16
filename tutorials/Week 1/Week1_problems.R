@@ -44,9 +44,13 @@ quantilesVec <- c(55, 84, 65, 54, 61, 67, 80, 59, 81, 82)
 
 # (1) calculate median 
 
+median(quantilesVec)
+
 # (2) calculate quantiles
 
+quantile(quantilesVec)
+
 # (3) make a histogram of state median income
-state.x77[,2]
+hist(state.x77[,2])
 
 # remember to save your plot as a pdf
