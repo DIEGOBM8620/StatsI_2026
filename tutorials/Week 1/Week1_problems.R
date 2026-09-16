@@ -17,13 +17,23 @@ detachAllPackages()
 y <- c(0, 4, 4, 5, 7, 10)
 
 # (1) find sum of y using the built-in R function
+sum(y)
 
 # (2) find mean of y using your "own" function
+sum(y)/length(y)
 # now do the same thing, but faster using the built-in R function
+mean(y)
 
 # (3) find sum of demeaned values
+y - mean(y)
 
 # (4) calculate sum of squared error
+deviations <- y - mean(y)
+squared_error <- sum(deviations^2)
+squared_error
+
+variance <- squared_error / (length(y) - 1)
+variance
 
 ###########
 # Quantiles
