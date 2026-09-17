@@ -44,7 +44,7 @@ quantilesVec <- c(55, 84, 65, 54, 61, 67, 80, 59, 81, 82)
 
 # (1) calculate median 
 
-median(quantilesVec)
+median(quantilesVec) # C
 
 # (2) calculate quantiles
 
