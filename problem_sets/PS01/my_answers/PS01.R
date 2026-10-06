@@ -28,7 +28,7 @@ pkgTest <- function(pkg){
 # ex: stringr
 # lapply(c("stringr"),  pkgTest)
 
-lapply(c(),  pkgTest)
+lapply(c("ggplot2"),  pkgTest)
 
 #####################
 # Problem 1
