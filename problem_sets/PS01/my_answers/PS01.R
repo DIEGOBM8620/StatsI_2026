@@ -28,7 +28,7 @@ pkgTest <- function(pkg){
 # ex: stringr
 # lapply(c("stringr"),  pkgTest)
 
-lapply(c("ggplot2"),  pkgTest)
+lapply(c("ggplot2","GGally"),  pkgTest)
 
 #####################
 # Problem 1
@@ -79,11 +79,11 @@ dir.create("PS01_figures", showWarnings = FALSE)
 variables <- expenditure[c("Y", "X1", "X2", "X3")] # Extract only the required variables to another data set.
 
 pdf("PS01_figures/scatterplot_matrix.pdf", width = 7, height = 5)
-pairs(variables, pch = 16, col = "blue") # Plot the variables.
+ggpairs(variables) # Plot the variables.
 dev.off()
 
-correlations <- cor(variables) # Get the correlation coefficients.
-print(round(correlations, 3))
+
+
 
 # 2. Please plot the relationship between Y and Region? On average, which region has the highest per capita expenditure on housing assistance?
 

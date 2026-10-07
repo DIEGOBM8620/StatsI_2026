@@ -241,21 +241,9 @@ numerical variables with this R code:
 	\includegraphics[width=\linewidth]{PS01_figures/scatterplot_matrix.pdf}
 \end{center}
 
-With this graph we can observe each variable plotted against the other ones, showing the relationships between six distinct pairs of variables. Some pairs of variables, including $X1$–$X3$ and $Y$–$X1$, appear to have moderate positive correlations. But if we want to better understand their relationships, we need to calculate the correlation coefficient for each pair of variables. We can use this R code for the calculation:
+With this graph we can observe each variable plotted against the other ones, showing the relationships between six distinct pairs of variables. Some pairs of variables, including $X1$–$X3$ and $Y$–$X1$, appear to have moderate positive correlations. But if we want to better understand their relationships, we need to calculate the correlation coefficient for each pair of variables. 
 
-\newpage
-
-\lstinputlisting[language=R, firstline=85, lastline=86]{PS01.R}
-
-\begin{verbatim}
-       Y    X1    X2    X3
-Y  1.000 0.532 0.448 0.464
-X1 0.532 1.000 0.206 0.595
-X2 0.448 0.206 1.000 0.221
-X3 0.464 0.595 0.221 1.000
-\end{verbatim}
-
-With this table we can observe that $Y$ (spending) has a moderate positive relationship with $X1$ (income), $X2$ (financial insecurity), and $X3$ (urbanisation). States with higher values of these variables tend to spend more, although the dots are quite spread out and therefore harder to fit into a linear regression model.
+With the correlation coefficients, we can observe that $Y$ (spending) has a moderate positive relationship with $X1$ (income), $X2$ (financial insecurity), and $X3$ (urbanisation). States with higher values of these variables tend to spend more, although the dots are quite spread out and therefore harder to fit into a linear regression model.
 
 $X1$ and $X3$ have the strongest relationship of the six
 ($r=0.595$): higher-income states tend to be more urban. $X1$ and
