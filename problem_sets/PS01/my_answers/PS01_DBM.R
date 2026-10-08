@@ -1,6 +1,6 @@
 #####################
 library(ggplot2)
-# set wd
+library(GGally)
 # clear global .envir
 #####################
 
