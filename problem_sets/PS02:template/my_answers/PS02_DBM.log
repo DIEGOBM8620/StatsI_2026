@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.11)  21 OCT 2026 22:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.11)  22 OCT 2026 00:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,8 +941,8 @@ File: PS02_figures/PS02_group_means.pdf Graphic file (type pdf)
 Package pdftex.def Info: PS02_figures/PS02_group_means.pdf  used on input line 
 368.
 (pdftex.def)             Requested size: 440.38033pt x 314.56494pt.
- [11 <./PS02_figures/PS02_group_means.pdf>] (./PS02_DBM.R) [12] (./PS02_DBM.aux
-)
+ [11 <./PS02_figures/PS02_group_means.pdf>] (./PS02_DBM.R) (./PS02_DBM.R) [12] 
+(./PS02_DBM.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -951,9 +951,9 @@ Package rerunfilecheck Info: File `PS02_DBM.out' has not changed.
 (rerunfilecheck)             Checksum: 4B5406E3BF5DBA42C698B5E20B1EFAF0;353.
  ) 
 Here is how much of TeX's memory you used:
- 27536 strings out of 467525
- 477436 string characters out of 5418982
- 1354883 words of memory out of 5000000
+ 27539 strings out of 467525
+ 477464 string characters out of 5418982
+ 1354881 words of memory out of 5000000
  55774 multiletter control sequences out of 15000+600000
  639794 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -975,10 +975,10 @@ ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2026
 /texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on PS02_DBM.pdf (12 pages, 575464 bytes).
+Output written on PS02_DBM.pdf (12 pages, 575521 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 293 compressed objects within 3 object streams
- 157 named destinations out of 1000 (max. 500000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 158 named destinations out of 1000 (max. 500000)
  39 words of extra memory for PDF output out of 10000 (max. 10000000)
 

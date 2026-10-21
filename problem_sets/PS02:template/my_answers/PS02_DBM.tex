@@ -377,21 +377,28 @@
 		GPs have an estimated $9.25$ more new or repaired drinking-water
 		facilities per village, on average, than villages in non-reserved GPs.
 		
-		Because \texttt{reserved} is coded 0/1, the coefficient is the difference
+		Because \texttt{reserved} is defined as 0/1, the coefficient is the difference
 		between the two sample means. We can calculate these means in R using this code:
 		
-		\lstinputlisting[language=R, firstline=177, lastline=180]{PS02_DBM.R}
+		\lstinputlisting[language=R, firstline=177, lastline=178]{PS02_DBM.R}
 		
 		\begin{verbatim}
 			0        1
 			14.73832 23.99074
-			[1] 9.252423
 		\end{verbatim}
 		
 		The estimated mean for villages in non-reserved GPs is $14.7383$ facilities.
 		For villages in reserved GPs, it is $23.9907$. Therefore,
 		
 		$$\bar Y_1-\bar Y_0=23.9907-14.7383=9.2524$$
+		
+		In R code:
+		
+		\lstinputlisting[language=R, firstline=179, lastline=180]{PS02_DBM.R}
+
+		\begin{verbatim}
+		[1] 9.252423
+		\end{verbatim}
 		
 		The intercept is the estimated mean for villages in non-reserved GPs.
 		Since reservation was randomly assigned, this difference supports interpreting
