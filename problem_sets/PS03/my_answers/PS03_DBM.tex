@@ -63,9 +63,15 @@
 \newtheorem{hyp}{Hypothesis}
 
 \setcounter{secnumdepth}{0}
+
+% Set new command to make easier inserting Rcode.
 \newcommand{\rcode}[2]{\lstinputlisting[language=R,firstline=#1,lastline=#2,firstnumber=1]{PS03_DBM.R}}
-\newcommand{\answer}{\par\smallskip\noindent\textbf{Answer:} }
+% Set new command to not have to repeat code for Answer: in bold and vspaces
+\newcommand{\answer}{\par\vspace{.25cm}\noindent\textbf{Answer:} }
+% Set new command to make easier inserting Graphics.
 \newcommand{\fitplot}[1]{\par\smallskip\centerline{\includegraphics[width=0.82\linewidth]{Figures/#1}}\smallskip}
+
+
 \title{Problem Set 3}
 \author{Barrera Munoz Diego}
 \date{Due: November 12, 2026}
@@ -73,18 +79,22 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\newpage
 
+\newpage
 \phantomsection
-\section{Question 1: Spending and incumbent vote share}
-We want to see how the incumbent's vote share varies with the spending gap. We measure this gap as log incumbent spending minus log challenger spending (\texttt{difflog}).
+\section{Question 1}
+\noindent We are interested in knowing how the difference in campaign spending between incumbent and challenger affects the incumbent's vote share.
 
 \begin{enumerate}[(a)]
 \setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
 \item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{difflog}.
-\answer First, we import the data and check the three variables.
-\rcode{1}{6}
+
+\answer First, we import the data and check the three variables for missing data.
+
+\rcode{9}{13}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
+
 \begin{verbatim}
 [1] 3193    3
 voteshare   difflog  presvote
@@ -98,10 +108,12 @@ voteshare   difflog  presvote
  Max.   :0.9930   Max.   : 5.8558   Max.   :0.9606
 \end{verbatim}
 }
-All 3,193 elections have complete data. The mean incumbent vote share is 0.6552, or 65.52\%.
+All 3,193 elections have complete data (no NAs).
 
-Then we use \texttt{lm()} to regress incumbent vote share on the spending gap:
-\rcode{8}{10}
+We regress incumbent \texttt{voteshare} $\sim$ \texttt{difflog} (log incumbent spending minus log challenger spending).
+
+\rcode{16}{17}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 Coefficients:
@@ -112,55 +124,79 @@ difflog     0.041666   0.000968   43.04   <2e-16 ***
 Multiple R-squared:  0.3673,    Adjusted R-squared:  0.3671
 \end{verbatim}
 }
-The spending gap explains \(36.73\%\) of the variation in incumbent vote share. The slope is positive, and we reject the null hypothesis of a zero slope at the 5\% level (two-sided \(p<0.001\)). Since spending was not randomly assigned, this is an association.
+
+The spending gap explains $36.73\%$ of the variation in incumbent vote share. The slope is positive. Our null hypothesis is that the population spending-gap slope is zero. Our alternative
+is that it differs from zero. The slope is positive ($t = 43.04$, two-sided $p < 0.001$), so
+we reject the null at $5\%$. 
 
 \newpage
 \item Make a scatterplot of the two variables and add the regression line.
-\answer First, we calculate the fitted mean vote share and its 95\% confidence limits over the observed range of spending gaps.
-\rcode{12}{19}
 
-\rcode{21}{35}
+\answer First, we calculate the fitted mean and its pointwise $95\%$ confidence limits across
+the observed spending gaps (to use later in the scatterplot). 
+
+\rcode{22}{28}
+
+\rcode{31}{44}
+
 \fitplot{Q1_vote_spending.pdf}
-Districts with the same spending gap can have quite different results. The dashed lines show uncertainty about the \emph{mean} vote share, so individual elections can fall well outside them.
+
+The spending gap explains $36.73\%$ of the variation in incumbent vote share. Individual
+results vary much more widely around the fitted line than the confidence limits for the
+mean.
 
 \newpage
+
 \item Save the residuals of the model in a separate object.
+
 \answer We save the residuals and check the first election. A residual is the observed vote share minus the fitted vote share.
-\rcode{37}{42}
+
+\rcode{47}{51}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
  observed    fitted  residual
  0.602361  0.602784 -0.000423
 \end{verbatim}
 }
-The first incumbent received \(60.24\%\) of the vote, about \(0.042\) percentage points below the prediction. This explains the negative residual.
+
+The first incumbent received $60.24\%$ of the vote, about $0.042$ percentage points below the prediction. This explains the negative residual.
 
 \item Write the prediction equation.
+
 \answer We take the intercept and slope from the fitted model:
-\rcode{44}{45}
+
+\rcode{56}{56}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
+	
 \begin{verbatim}
 (Intercept)     difflog
    0.579031    0.041666
 \end{verbatim}
 }
-Let \(D_i\) be the log spending gap and \(V_i\) the incumbent's vote share in election \(i\). Using the rounded coefficients, the prediction equation is
-\[
-\widehat V_i=0.579031+0.041666\,D_i.
-\]
-At equal spending (\(D_i=0\)), the predicted incumbent vote share is \(57.90\%\). A one-unit increase in the log spending gap is associated with \(4.17\) percentage points more incumbent vote share, on average.
+
+For election \(i\), the prediction equation is:
+
+$$\widehat{\texttt{voteshare}}_i=0.579031+0.041666\,\texttt{difflog}_i$$
+
+At equal spending $(\texttt{difflog}=0$), the predicted incumbent vote share is $57.90\%$. For a one-unit increase in the log spending gap, the model predicts an increase of $0.041666$ in incumbent vote share, or $4.17$ percentage points.
 \end{enumerate}
 
 \newpage
 \phantomsection
-\section{Question 2: Spending and presidential vote share}
-We now look at the same spending gap, but change the outcome to the district vote share of the presidential candidate from the incumbent's party (\texttt{presvote}).
+\section{Question 2}
+\noindent We are interested in knowing how the difference between incumbent and challenger's spending and the vote share of the presidential candidate of the incumbent's party are related.
 
-\begin{enumerate}[(a)]
+\begin{enumerate}[(1)]
 \setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
 \item Run a regression where the outcome variable is \texttt{presvote} and the explanatory variable is \texttt{difflog}.
-\answer We use \texttt{difflog} as in Question~1. This time we want to know whether the spending gap also lines up with support for the party's presidential candidate.
-\rcode{47}{49}
+
+\answer We will use \texttt{difflog} to predict the vote share of the presidential
+candidate from the incumbent’s party (\texttt{presvote}).
+
+\rcode{65}{66}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 Coefficients:
@@ -171,53 +207,74 @@ difflog     0.023837   0.001359   17.54   <2e-16 ***
 Multiple R-squared:  0.08795,   Adjusted R-squared:  0.08767
 \end{verbatim}
 }
-The estimated slope is positive and differs from zero at the 5\% level (\(p<0.001\)). The spending gap explains \(8.80\%\) of the variation in presidential vote share, compared with \(36.73\%\) in incumbent vote share in Question~1.
+
+Our null hypothesis is that the population spending-gap slope is zero. Our two-sided
+alternative is that it differs from zero. We reject the null at $5\%$ ($t = 17.54$, $p < 0.001$).
+The association is positive. The gap explains $8.80\%$ of the variation in presidential
+vote share.
 
 \item Make a scatterplot of the two variables and add the regression line.
-\answer We put the spending gap on the horizontal axis and presidential vote share on the vertical axis. We calculate the 95\% confidence limits from the model in part~(a).
-\rcode{51}{54}
 
-\rcode{56}{70}
+\answer We put \texttt{difflog} on the horizontal axis and \texttt{presvote} on the vertical axis. We calculate the 95\% confidence limits from the model in part~(a).
+
+\rcode{71}{73}
+
+\rcode{76}{89}
+
 \fitplot{Q2_pres_spending.pdf}
+
+\enlargethispage{\baselineskip}
+
 The line slopes upward, but the points are more spread out than in Question~1. The spending gap tells us less about the presidential vote.
 
 \item Save the residuals of the model in a separate object.
-\answer We save the presidential residuals for Question~4 and check the first election:
-\rcode{72}{77}
+
+\answer We save the presidential residuals and check the first election:
+
+\rcode{92}{96}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 observed   fitted residual
 0.526778 0.521173 0.005606
 \end{verbatim}
 }
-The first residual is positive: the presidential candidate received \(0.56\) percentage points more than predicted.
+
+The first residual is positive: the presidential candidate received $0.56$ percentage points more than predicted.
 
 \item Write the prediction equation.
+
 \answer We can read the two coefficients from the model:
-\rcode{79}{80}
+
+\rcode{101}{101}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 (Intercept)     difflog
    0.507583    0.023837
 \end{verbatim}
 }
-Let \(P_i\) be the presidential vote share. Then
-\[
-\widehat P_i=0.507583+0.023837\,D_i.
-\]
-At equal spending, the predicted share is \(50.76\%\). Each additional log unit of the gap corresponds to \(2.38\) percentage points more presidential vote share.
+
+The prediction equation is
+
+$$\widehat{\texttt{presvote}}_i=0.507583+0.023837\,\texttt{difflog}_i$$
+
+At equal spending, the predicted share is \(50.76\%\). A one-unit increase in the log spending gap raises the predicted presidential vote share by \(0.023837\), or \(2.38\) percentage points.
 \end{enumerate}
 
 \newpage
 \phantomsection
-\section{Question 3: The two vote shares}
-How is support for the presidential candidate of the incumbent's party related to the incumbent's own vote share?
+\section{Question 3}
+\noindent We are interested in knowing how the vote share of the presidential candidate of the incumbent's party is associated with the incumbent's electoral success.
 
-\begin{enumerate}[(a)]
+\begin{enumerate}[(1)]
 \setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
 \item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{presvote}.
-\answer We use the incumbent's vote share as the outcome and the presidential vote share as the explanatory variable. For now, we do not control for spending.
-\rcode{82}{84}
+
+\answer We regress \texttt{voteshare} $\sim$ \texttt{presvote}:
+
+\rcode{110}{111}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 Coefficients:
@@ -228,45 +285,62 @@ presvote    0.388018   0.013493   28.76   <2e-16 ***
 Multiple R-squared:  0.2058,    Adjusted R-squared:  0.2056
 \end{verbatim}
 }
-Presidential vote share explains \(20.58\%\) of the variation in incumbent vote share. The positive slope differs from zero at the 5\% level (\(p<0.001\)): districts that give the party more support in the presidential race also tend to give its incumbent a larger share of the vote.
+
+Our null hypothesis is that the population slope on presidential vote share is zero.
+Our two-sided alternative is that it differs from zero. We reject the null at the $5\%$
+level ($t = 28.76$, $p < 0.001$). Greater support for the party’s presidential candidate
+predicts greater support for its incumbent. Presidential vote share explains $20.58\%$ of
+the variation in incumbent vote share.
 
 \item Make a scatterplot of the two variables and add the regression line.
-\answer We calculate the fitted incumbent vote share and its 95\% confidence limits at different values of \texttt{presvote}.
-\rcode{86}{91}
 
-\rcode{93}{99}
-\newpage
-Finally, we label both axes as percentages and save the plot.
-\rcode{101}{111}
+\enlargethispage{\baselineskip}
+
+\answer We plot one point per election and express both voteshares as percentages on the axes. We include a presidential vote share of $0.50$ when calculating the CI.
+
+\rcode{116}{120}
+
+\rcode{123}{137}
+
 \fitplot{Q3_vote_pres.pdf}
-The fitted line rises from left to right. Even where the presidential candidate received about half the vote, some incumbents received less than half and others considerably more.
+
+Around a presidential vote share of $50\%$, we see incumbents who lost their race as well
+as incumbents who won comfortably.
 
 \item Write the prediction equation.
-\answer We use the estimated intercept and the coefficient on \texttt{presvote}:
-\rcode{113}{114}
+
+\answer We use the two coefficients from the fitted line:
+
+\rcode{140}{140}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 (Intercept)    presvote
    0.441330    0.388018
 \end{verbatim}
 }
+
 The prediction equation is
-\[
-\widehat V_i=0.441330+0.388018\,P_i.
-\]
-For example, a change in presidential vote share from \(50\%\) to \(60\%\) gives \(0.388018(0.60-0.50)=0.03880\), or \(3.88\) percentage points more incumbent vote share.
+
+$$\widehat{\texttt{voteshare}}_i=0.441330+0.388018\,\texttt{presvote}_i$$
+
+If presidential vote share rises from $50\%$ to $60\%$, the predicted incumbent share rises by $0.388018(0.60-0.50)\approx0.03880\), or \(3.88$ percentage points.
+
 \end{enumerate}
 
 \newpage
 \phantomsection
-\section{Question 4: The added-variable plot}
-In Questions~1(c) and 2(c), we saved the part of each vote share left unexplained by the spending gap. Now we compare those two residuals.
+\section{Question 4}
+\noindent The residuals from part (a) tell us how much of the variation in \texttt{voteshare} is $not$ explained by the difference in spending between incumbent and challenger. The residuals in part (b) tell us how much of the variation in \texttt{presvote} is $not$ explained by the difference in spending between incumbent and challenger in the district.
 
-\begin{enumerate}[(a)]
+\begin{enumerate}[(1)]
 \setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
-\item Run a regression where the outcome variable is the residual from Question~1 and the explanatory variable is the residual from Question~2.
-\answer For each election, we use the incumbent's residual as the outcome and the presidential candidate's residual as the explanatory variable.
-\rcode{116}{119}
+\item Run a regression where the outcome variable is the residuals from Question 1 and the explanatory variable is the residuals from Question 2.
+
+\answer We can use the incumbent vote-share residuals saved in Question~1(c) as the outcome and the presidential vote-share residuals saved in Question~2(c) as the explanatory variable.
+
+\rcode{149}{151}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 Coefficients:
@@ -277,45 +351,56 @@ pres_resid   2.569e-01  1.176e-02   21.84   <2e-16 ***
 Multiple R-squared:   0.13, Adjusted R-squared:  0.1298
 \end{verbatim}
 }
-The intercept is effectively zero because both sets of residuals have mean zero. The slope is positive and differs from zero at the 5\% level (\(p<0.001\)). The presidential residual explains \(13.00\%\) of the variation \emph{left over} in incumbent vote share after accounting for spending.
+
+Our null hypothesis is that the population slope relating the two spending-adjusted
+shares is zero. Our two-sided alternative is that it differs from zero. We reject the null
+at the $5\%$ level ($t = 21.84$, $p < 0.001$). The presidential residual explains $13.00\%$ of
+the variation left in incumbent vote share after adjusting for spending.
 
 \item Make a scatterplot of the two residuals and add the regression line.
-\answer We use the model from part~(a) to calculate the fitted incumbent residual and its 95\% confidence limits across the observed presidential residuals.
-\rcode{121}{126}
 
-\rcode{128}{134}
-\newpage
-To read the residuals in percentage points, we multiply the axis labels by 100.
-\rcode{136}{146}
+\answer We put the presidential residual on the horizontal axis and the incumbent residual on the vertical axis.
+
+\rcode{156}{160}
+
+\rcode{163}{178}
+
 \fitplot{Q4_added_variable.pdf}
-The line slopes upward. In districts in the upper right, both candidates did better than the spending gap predicted.
+
+Each point represents one election. The presidential candidate outperformed the prediction from spending, while the incumbent underperformed it.
 
 \item Write the prediction equation.
+
 \answer We take the coefficients from the residual regression:
-\rcode{148}{149}
+
+\rcode{181}{181}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 (Intercept)  pres_resid
    0.000000    0.256877
 \end{verbatim}
 }
-Let \(r_{Vi}\) and \(r_{Pi}\) be the incumbent and presidential residuals. The intercept rounds to zero, so the prediction equation is
-\[
-\widehat r_{Vi}=0.256877\,r_{Pi}.
-\]
-When the presidential candidate does one percentage point better than predicted from spending, the incumbent is predicted to do about \(0.26\) points better as well.
+
+$$\widehat{\texttt{vote\_resid}}_i=0.256877\,\texttt{pres\_resid}_i$$
+
+Each original regression includes an intercept, so both sets of residuals have mean zero. Their fitted line passes through the origin. When the presidential candidate exceeds the spending prediction by one percentage point, we predict an incumbent residual of $+0.257$ percentage points.
+
 \end{enumerate}
 
 \newpage
 \phantomsection
-\section{Question 5: The multiple regression}
-Finally, we include presidential vote share and the spending gap in the same model for incumbent vote share.
+\section{Question 5}
+\noindent What if the incumbent's vote share is affected by both the president's popularity and the difference in spending between incumbent and challenger?
 
 \begin{enumerate}[(a)]
 \setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
-\item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variables are \texttt{difflog} and \texttt{presvote}.
-\answer We include both variables so that we can interpret each coefficient while holding the other variable fixed.
-\rcode{151}{153}
+\item Run a regression where the outcome variable is the incumbent's \texttt{voteshare} and the explanatory variables are \texttt{difflog} and \texttt{presvote}.
+
+\answer We will include the spending gap and presidential vote share in the same regression. Each slope measures the association with incumbent vote share while we hold the other predictor fixed.
+
+\rcode{190}{191}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 Coefficients:
@@ -327,38 +412,50 @@ presvote    0.2568770  0.0117637   21.84   <2e-16 ***
 Multiple R-squared:  0.4496,    Adjusted R-squared:  0.4493
 \end{verbatim}
 }
-Both slopes are positive and differ from zero at the 5\% level (\(p<0.001\) for each). Together, the two variables explain \(44.96\%\) of the variation in incumbent vote share.
+
+For each predictor, our null hypothesis is that its population slope is zero with the other predictor held fixed. The two-sided alternative is that its slope differs from zero. We reject both null hypotheses at the 5\% level $(p<0.001$ for each slope). Together the predictors explain $44.96\%$ of the variation in incumbent vote share.
 
 \item Write the prediction equation.
-\answer We use the intercept and both slopes:
-\rcode{155}{156}
+
+\answer We use the fitted intercept and both partial slopes:
+
+\rcode{194}{194}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
 (Intercept)     difflog    presvote
    0.448644    0.035543    0.256877
 \end{verbatim}
 }
+
 Therefore, the prediction equation is
-\[
-\widehat V_i=0.448644+0.035543\,D_i+0.256877\,P_i.
-\]
-At the same presidential vote share, a one-unit increase in the log spending gap is associated with \(3.55\) percentage points more incumbent vote share. At the same spending gap, a 10-percentage-point increase in presidential vote share is associated with \(2.57\) percentage points more incumbent vote share, compared with \(3.88\) before adjusting for spending in Question~3.
+
+$$\widehat{\texttt{voteshare}}_i=0.448644+0.035543\,\texttt{difflog}_i+0.256877\,\texttt{presvote}_i$$
+
+Holding presidential vote share fixed, a one-unit increase in the log spending gap predicts an increase of $0.035543$ in incumbent vote share, or $3.55$ percentage points. Holding the spending gap fixed, a rise from $50\%$ to $60\%$ in presidential vote share predicts $2.57$ percentage points more for the incumbent. The corresponding unadjusted difference in Question~3 was $3.88$ points.
 
 \newpage
-\item What is identical to the output in Question~4? Why?
-\answer First, we compare the two slopes directly in R. Then we check whether the two models leave the same residuals for each election:
-\rcode{158}{162}
+\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?
+
+\answer The coefficient on \texttt{presvote} in Question~5 equals the coefficient on \texttt{pres\_resid} in Question~4 to numerical precision. We compare the unrounded estimates and their standard errors.
+
+\rcode{197}{203}
+
 {\small\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}
 \begin{verbatim}
           Q4           Q5
 0.2568770127 0.2568770127
 [1] TRUE
+         Q4          Q5
+0.011761902 0.011763746
 \end{verbatim}
 }
-The slope on presidential vote share in Question~5 and the slope on the presidential residual in Question~4 are both \(0.2568770127\). The residuals also match, up to numerical precision.
 
-In Question~4, we first removed from each vote share the part predicted by the spending gap and then compared what was left. In Question~5, holding the spending gap fixed makes the same comparison. That is why we get the same slope (the Frisch--Waugh--Lovell result).
+Both slopes equal $0.2568770127$, and the residuals match to numerical precision. For a one-percentage-point increase in presidential vote share at the same spending gap, the model predicts about $0.257$ percentage points more incumbent vote share.
 
-The two models do not explain the same fraction of their outcomes: Question~4 explains \(13.00\%\) of the variation \emph{remaining after spending}, while Question~5 explains \(44.96\%\) of the variation in incumbent vote share itself. Question~5 also has 3,190 residual degrees of freedom, one fewer than Question~4.
+For the explanation of why this happens, we can see the slides~12--14 of the Week~9 tutorial:
+ In Question~1, we subtract the incumbent vote share predicted by spending from the observed incumbent share. In Question~2, we do the same for the presidential share, using the same spending gap and the same elections. What remains in each share is uncorrelated with the spending gap. Regressing the first residual on the second therefore uses exactly the variation that estimates the presidential slope when we hold spending fixed in Question~5. This is the Frisch--Waugh--Lovell result.
+
+The standard errors both round to $0.01176$. For the error variance, R divides the same residual sum of squares by $3{,}191$ in Question~4 and by $3{,}190$ in Question~5, where we estimate one more coefficient. This gives the slightly larger standard error in Question~5. The $R^2$ values use different totals as well. Question~4 accounts for $13.00\%$ of the incumbent variation remaining after spending, and Question~5 accounts for $44.96\%$ of the original variation.
 \end{enumerate}
 \end{document}

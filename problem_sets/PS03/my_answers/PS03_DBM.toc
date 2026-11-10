@@ -1,5 +1,5 @@
-\contentsline {section}{Question 1: Spending and incumbent vote share}{2}{section*.1}%
-\contentsline {section}{Question 2: Spending and presidential vote share}{5}{section*.2}%
-\contentsline {section}{Question 3: The two vote shares}{7}{section*.3}%
-\contentsline {section}{Question 4: The added-variable plot}{9}{section*.4}%
-\contentsline {section}{Question 5: The multiple regression}{11}{section*.5}%
+\contentsline {section}{Question 1}{2}{section*.1}%
+\contentsline {section}{Question 2}{5}{section*.2}%
+\contentsline {section}{Question 3}{7}{section*.3}%
+\contentsline {section}{Question 4}{9}{section*.4}%
+\contentsline {section}{Question 5}{11}{section*.5}%
