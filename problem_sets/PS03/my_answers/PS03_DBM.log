@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.11)  10 NOV 2026 20:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.11)  11 NOV 2026 20:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,7 +855,7 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
         2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
 \c@hyp=\count360
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 79
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 90
 .
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -867,24 +867,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 (./PS03_DBM.aux)
 \openout1 = `PS03_DBM.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -908,61 +908,61 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-9.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 9
+0.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-9.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
+0.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-79.
+90.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-79.
+90.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 79.
+(Font)              <12> on input line 90.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 79.
+(Font)              <8> on input line 90.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 79.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
+(Font)              <6> on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package xypdf Info: Line width: 0.39998pt on input line 79.
-Package hyperref Info: Link coloring OFF on input line 79.
+Package xypdf Info: Line width: 0.39998pt on input line 90.
+Package hyperref Info: Link coloring OFF on input line 90.
  (./PS03_DBM.out) (./PS03_DBM.out)
 \@outlinefile=\write7
 \openout7 = `PS03_DBM.out'.
 
 \c@lstlisting=\count368
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 81.
+(Font)              <14.4> on input line 94.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 81.
+(Font)              <10> on input line 94.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 81.
+(Font)              <7> on input line 94.
  (./PS03_DBM.toc)
 \tf@toc=\write8
 \openout8 = `PS03_DBM.toc'.
@@ -971,8 +971,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
-0.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+04.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -986,50 +986,52 @@ File: lstlang2.sty 2025/11/14 1.11b listings language file
 File: lstlang3.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 94.
+nput line 108.
 
 (./PS03_DBM.R
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
-.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+3.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ))
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 124.
+
 (./PS03_DBM.R) [2{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-ts1.
-enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/
-local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/
-2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] (./PS03_DBM.R) (./PS03_DBM.R
+enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/loca
+l/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/
+2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}] (./PS03_DBM.R) (./PS03_DBM.R
 )
-<Figures/Q1_vote_spending.pdf, id=62, 505.89pt x 289.08pt>
-File: Figures/Q1_vote_spending.pdf Graphic file (type pdf)
-<use Figures/Q1_vote_spending.pdf>
-Package pdftex.def Info: Figures/Q1_vote_spending.pdf  used on input line 142.
+<PS03_Q1_vote_spending.pdf, id=70, 505.89pt x 289.08pt>
+File: PS03_Q1_vote_spending.pdf Graphic file (type pdf)
+<use PS03_Q1_vote_spending.pdf>
+Package pdftex.def Info: PS03_Q1_vote_spending.pdf  used on input line 176.
 (pdftex.def)             Requested size: 368.07375pt x 210.3297pt.
- [3 <./Figures/Q1_vote_spending.pdf>] (./PS03_DBM.R) (./PS03_DBM.R) [4]
+ [3 <./PS03_Q1_vote_spending.pdf>] (./PS03_DBM.R) (./PS03_DBM.R) [4]
 (./PS03_DBM.R) (./PS03_DBM.R) (./PS03_DBM.R)
-<Figures/Q2_pres_spending.pdf, id=116, 505.89pt x 289.08pt>
-File: Figures/Q2_pres_spending.pdf Graphic file (type pdf)
-<use Figures/Q2_pres_spending.pdf>
-Package pdftex.def Info: Figures/Q2_pres_spending.pdf  used on input line 224.
+<PS03_Q2_pres_spending.pdf, id=124, 505.89pt x 289.08pt>
+File: PS03_Q2_pres_spending.pdf Graphic file (type pdf)
+<use PS03_Q2_pres_spending.pdf>
+Package pdftex.def Info: PS03_Q2_pres_spending.pdf  used on input line 290.
 (pdftex.def)             Requested size: 368.07375pt x 210.3297pt.
  [5] (./PS03_DBM.R) (./PS03_DBM.R)
-[6 <./Figures/Q2_pres_spending.pdf>] (./PS03_DBM.R) (./PS03_DBM.R)
-(./PS03_DBM.R)
-<Figures/Q3_vote_pres.pdf, id=169, 505.89pt x 289.08pt>
-File: Figures/Q3_vote_pres.pdf Graphic file (type pdf)
-<use Figures/Q3_vote_pres.pdf>
-Package pdftex.def Info: Figures/Q3_vote_pres.pdf  used on input line 305.
+[6 <./PS03_Q2_pres_spending.pdf>] (./PS03_DBM.R) (./PS03_DBM.R) (./PS03_DBM.R)
+[7]
+<PS03_Q3_vote_pres.pdf, id=210, 505.89pt x 289.08pt>
+File: PS03_Q3_vote_pres.pdf Graphic file (type pdf)
+<use PS03_Q3_vote_pres.pdf>
+Package pdftex.def Info: PS03_Q3_vote_pres.pdf  used on input line 406.
 (pdftex.def)             Requested size: 368.07375pt x 210.3297pt.
- [7] (./PS03_DBM.R) [8 <./Figures/Q3_vote_pres.pdf>]
-(./PS03_DBM.R) (./PS03_DBM.R) (./PS03_DBM.R [9])
-<Figures/Q4_added_variable.pdf, id=245, 505.89pt x 289.08pt>
-File: Figures/Q4_added_variable.pdf Graphic file (type pdf)
-<use Figures/Q4_added_variable.pdf>
-Package pdftex.def Info: Figures/Q4_added_variable.pdf  used on input line 368.
-
+ (./PS03_DBM.R) [8 <./PS03_Q3_vote_pres.pdf>] (./PS03_DBM.R) (./PS03_DBM.R)
+(./PS03_DBM.R [9])
+<PS03_Q4_added_variable.pdf, id=256, 505.89pt x 289.08pt>
+File: PS03_Q4_added_variable.pdf Graphic file (type pdf)
+<use PS03_Q4_added_variable.pdf>
+Package pdftex.def Info: PS03_Q4_added_variable.pdf  used on input line 494.
 (pdftex.def)             Requested size: 368.07375pt x 210.3297pt.
- (./PS03_DBM.R) [10 <./Figures/Q4_added_variable.pdf>] (./PS03_DBM.R) (./PS03_D
-BM.R) [11] (./PS03_DBM.R)
-[12] (./PS03_DBM.aux)
+ (./PS03_DBM.R) [10 <./PS03_Q4_added_variable.pdf>]
+(./PS03_DBM.R) [11] (./PS03_DBM.R) (./PS03_DBM.R) [12] (./PS03_DBM.R) [13]
+(./PS03_DBM.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1038,28 +1040,30 @@ Package rerunfilecheck Info: File `PS03_DBM.out' has not changed.
 (rerunfilecheck)             Checksum: 09E40EC13EBF2CA79A15FCE5881EC372;485.
  ) 
 Here is how much of TeX's memory you used:
- 27932 strings out of 467525
- 484231 string characters out of 5418982
- 1449728 words of memory out of 5000000
- 56108 multiletter control sequences out of 15000+600000
- 686169 words of font info for 97 fonts, out of 8000000 for 9000
+ 28002 strings out of 467525
+ 485414 string characters out of 5418982
+ 1481930 words of memory out of 5000000
+ 56156 multiletter control sequences out of 15000+600000
+ 691122 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,104p,3240b,2242s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,104p,3240b,2230s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/lo
-cal/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texliv
-e/2026/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2026/texm
-f-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2026/texmf-dist/font
-s/type1/public/lm/lmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/pub
-lic/lm/lmr17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr6
-.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/l
-ocal/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texli
-ve/2026/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026/te
-xmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2026/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on PS03_DBM.pdf (12 pages, 1016403 bytes).
+cal/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texliv
+e/2026/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2026/tex
+mf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2026/texmf-dist/fon
+ts/type1/public/lm/lmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/pu
+blic/lm/lmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr
+17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texli
+ve/2026/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2026/texm
+f-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2026/texmf-dist/fon
+ts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/p
+ublic/lm/lmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lm
+tt12.pfb>
+Output written on PS03_DBM.pdf (13 pages, 1033609 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 340 compressed objects within 4 object streams
- 174 named destinations out of 1000 (max. 500000)
+ 428 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
+ 189 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
