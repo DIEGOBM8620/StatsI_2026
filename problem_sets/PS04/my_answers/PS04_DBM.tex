@@ -1,0 +1,399 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\normalsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle,columns=fullflexible,upquote=true,aboveskip=2pt,belowskip=2pt}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\setcounter{secnumdepth}{0}
+\addtolength{\textheight}{16pt}
+\addtolength{\footskip}{8pt}
+\raggedbottom
+
+% Set new command to make easier inserting Rcode.
+\newcommand{\rcode}[2]{\lstinputlisting[language=R,firstline=#1,lastline=#2,firstnumber=1]{PS04_DBM.R}}
+
+% Set new command to not have to repeat code for Answer: in bold and vspaces
+\newcommand{\answer}{\par\vspace{.18cm}\noindent\textbf{Answer:} }
+
+\renewcommand{\widehat}[1]{\mathord{\tikz[baseline=(outcome.base)]{
+  \node[inner sep=0pt,outer sep=0pt] (outcome) {$#1$};
+  \draw[line width=.48pt,line join=round]
+    ([yshift=1.1pt]outcome.north west) -- ([yshift=4pt]outcome.north) --
+    ([yshift=1.1pt]outcome.north east);}}}
+
+\title{Problem Set 4}
+\author{Barrera Munoz Diego}
+\date{Due: November 26, 2026}
+
+\begin{document}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 1pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 1pt}
+\maketitle
+\tableofcontents
+
+\newpage
+
+\phantomsection
+\section{Question 1: Economics}
+\noindent In this question, use the \texttt{prestige} dataset in the \texttt{car} library. First, run the following commands:
+
+\begin{verbatim}
+install.packages(car)
+library(car)
+data(Prestige)
+help(Prestige)
+\end{verbatim}
+
+\noindent We would like to study whether individuals with higher levels of income have more prestigious jobs. Moreover, we would like to study whether professionals have more prestigious jobs than blue and white collar workers.
+
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
+\item Create a new variable \texttt{professional} by recoding the variable \texttt{type} so that professionals are coded as $1$, and blue and white collar workers are coded as $0$ (Hint: \texttt{ifelse}).
+
+\answer Since the dataset groups professional, managerial and technical occupations as \texttt{prof}, we code this group as $1$ and group blue collar (\texttt{bc}) and white collar (\texttt{wc}) together as $0$.
+
+\rcode{11}{14}
+\rcode{17}{21}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} cccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & 0 & 1 & Missing \\ 
+\hline \\[-1.8ex] 
+bc & $44$ & $0$ & $0$ \\ 
+prof & $0$ & $31$ & $0$ \\ 
+wc & $23$ & $0$ & $0$ \\ 
+Missing & $0$ & $0$ & $4$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+Of the $102$ occupations, $31$ are professional and $67$ are non-professional ($44$ blue collar and $23$ white collar). The four occupations with missing type drop out of the regression.
+
+\newpage
+
+\item Run a linear model with \texttt{prestige} as an outcome and \texttt{income}, \texttt{professional}, and the interaction of the two as predictors (Note: this is a continuous $\times$ dummy interaction.)
+
+\answer We fit both predictors and their product, \texttt{income:professional}.
+
+\rcode{26}{28}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & prestige \\ 
+\hline \\[-1.8ex] 
+ income & 0.003171$^{***}$ (0.000499) \\ 
+  & t = 6.350866 \\ 
+  professional & 37.781280$^{***}$ (4.248274) \\ 
+  & t = 8.893324 \\ 
+  income:professional & $-$0.002326$^{***}$ (0.000567) \\ 
+  & t = $-$4.098239 \\ 
+  Constant & 21.142260$^{***}$ (2.804426) \\ 
+  & t = 7.538890 \\ 
+ \hline \\[-1.8ex] 
+Observations & 98 \\ 
+R$^{2}$ & 0.787154 \\ 
+Adjusted R$^{2}$ & 0.780361 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular}
+}\par}
+\smallskip
+
+Both slopes are positive ($p<0.01$ for each), and their difference is statistically reliable ($t_{94}=-4.10$, $p<0.001$).
+
+\newpage
+
+\item Write the prediction equation based on the result.
+
+\answer We write $D_i=\texttt{professional}_i$ ($0$ for blue or white collar, $1$ for professional).
+
+\rcode{33}{35}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} cccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+(Intercept) & income & professional & income:professional \\ 
+\hline \\[-1.8ex] 
+21.14225885 & 0.00317091 & 37.78127995 & -0.00232571 \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+$$\widehat{\texttt{prestige}}_i=\hat{\beta}_0+\hat{\beta}_1\,\texttt{income}_i+\hat{\beta}_2\,D_i+\hat{\beta}_3\,(\texttt{income}_i\times D_i)$$
+
+$$
+\begin{aligned}
+\widehat{\texttt{prestige}}_i
+&=21.142+0.003171\,\texttt{income}_i+37.781\,\texttt{professional}_i\\
+&\quad-0.002326\,(\texttt{income}_i\times\texttt{professional}_i)
+\end{aligned}
+$$
+
+It could also be written as:
+
+$$\widehat{\texttt{prestige}}_i =
+\begin{cases}
+21.14226 + 0.00317091\,\texttt{income}_i & \text{if }D_i=\texttt{professional}_i=0,\\
+58.92354 + 0.00084520\,\texttt{income}_i & \text{if }D_i=\texttt{professional}_i=1.
+\end{cases}$$
+
+\item Interpret the coefficient for \texttt{income}.
+
+\answer Among blue and white collar occupations (the reference group, $D_i=0$), each additional dollar of occupational income is associated with $0.003171$ more prestige points on average. A \$1,000 increase corresponds to about $3.17$ more prestige points.
+
+\rcode{40}{40}
+\begin{verbatim}
+[1] 3.170909
+\end{verbatim}
+
+\item Interpret the coefficient for \texttt{professional}.
+
+\answer Holding occupational income constant at \$0, the model predicts that professional occupations ($D_i=1$) score $37.78$ prestige points higher on average than blue and white collar occupations ($D_i=0$).
+
+\rcode{45}{45}
+\begin{verbatim}
+[1] 37.78128
+\end{verbatim}
+
+\newpage
+
+\item What is the effect of a \$1,000 increase in income on prestige score for professional occupations? In other words, we are interested in the marginal effect of income when the variable \texttt{professional} takes the value of $1$. Calculate the change in $\hat{y}$ associated with a \$1,000 increase in income based on your answer for (c).
+
+\answer The income and interaction coefficients add up to $0.00084520$ prestige points per dollar. For a \$1,000 increase in income, the predicted change is:
+
+$$\Delta\widehat{\texttt{prestige}}=1{,}000\,(0.00317091-0.00232571)\approx 0.8452.$$
+
+\rcode{50}{51}
+\begin{verbatim}
+[1] 0.8452
+\end{verbatim}
+
+On average, a \$1,000 increase in occupational income is associated with about $0.85$ more prestige points for professional occupations ($D_i=1$).
+
+\item What is the effect of changing one's occupations from non-professional to professional when her income is \$6,000? We are interested in the marginal effect of professional jobs when the variable \texttt{income} takes the value of $6,000$. Calculate the change in $\hat{y}$ based on your answer for (c).
+
+\answer We hold income at \$6,000 and change $D_i$ from $0$ to $1$. The intercept and income term cancel when we subtract the two predictions. Then we get:
+
+$$\Delta\widehat{\texttt{prestige}}=37.78128-6{,}000\,(0.00232571)\approx 23.8270.$$
+
+\rcode{56}{60}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} ccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Non-professional & Professional & Difference \\ 
+\hline \\[-1.8ex] 
+$40.1677$ & $63.9947$ & $23.8270$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+At an average income of \$6,000, the model predicts that a professional occupation scores about $23.83$ prestige points higher than a non-professional occupation.
+\end{enumerate}
+
+\newpage
+
+\phantomsection
+\section{Question 2: Political Science}
+\noindent Researchers are interested in learning the effect of all of those yard signs on voting preferences. Working with a campaign in Fairfax County, Virginia, 131 precincts were randomly divided into a treatment and control group. In 30 precincts, signs were posted around the precinct that read, ``For Sale: Terry McAuliffe. Don't Sellout Virgina on November 5.''
+
+\medskip
+\noindent Below is the result of a regression with two variables and a constant. The dependent variable is the proportion of the vote that went to McAuliff's opponent Ken Cuccinelli. The first variable indicates whether a precinct was randomly assigned to have the sign against McAuliffe posted. The second variable indicates a precinct that was adjacent to a precinct in the treatment group (since people in those precincts might be exposed to the signs).
+
+% Table supplied in the question.
+\begin{center}
+\textbf{Impact of lawn signs on vote share}\\[3pt]
+{\renewcommand{\arraystretch}{0.94}%
+\begin{tabular}{lc}
+\hline
+Precinct assigned lawn signs (n=30)    & 0.042 \\
+                                      & (0.016) \\
+Precinct adjacent to lawn signs (n=76) & 0.042 \\
+                                      & (0.013) \\
+Constant                              & 0.302 \\
+                                      & (0.011) \\
+\hline
+\end{tabular}}\\[2pt]
+{\textit{Notes:} $R^2=0.094$, $N=131$}
+\end{center}
+
+\begin{enumerate}[(a)]
+\setlength{\itemsep}{4pt}\setlength{\parsep}{2pt}
+\item Use the results from a linear regression to determine whether having these yard signs in a precinct affects vote share (e.g., conduct a hypothesis test with $\alpha=.05$).
+
+\answer For precinct $i$, $D_{1i}$ indicates its own sign assignment and $D_{2i}$ indicates adjacency to a precinct assigned signs ($1$ for yes, $0$ for no). Holding adjacency fixed, we test whether assignment changes Cuccinelli's expected vote share. Our hypothesis are:
+
+$$H_0:\beta_{\mathrm{assigned}}=0  \qquad H_A:\beta_{\mathrm{assigned}}\ne 0$$
+
+Then, we use the rounded estimates and $128$ residual degrees of freedom:
+
+$$t=\frac{0.042-0}{0.016}=2.625,\qquad p=2\Pr(T_{128}\geq |2.625|)\approx 0.0097.$$
+
+\newpage
+
+\rcode{68}{73}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} cc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+t & p \\ 
+\hline \\[-1.8ex] 
+2.62500000 & 0.00972002 \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+Since $p\approx0.0097<0.05$, we reject $H_0$. This means the data provide statistically significant evidence that assigning yard signs changed Cuccinelli's vote share. Thus, holding adjacency fixed, the estimated increase from no assignment ($D_{1i}=0$) to assignment ($D_{1i}=1$) is $0.042$ on average, or $4.2$ percentage points.
+
+\item Use the results to determine whether being next to precincts with these yard signs affects vote share (e.g., conduct a hypothesis test with $\alpha=.05$).
+
+\answer Our null hypothesis is that Cuccinelli's expected vote share is the same in adjacent and non-adjacent precincts, holding the precinct's own assignment fixed:
+
+ $$H_0:\beta_{\mathrm{adjacent}}=0 \qquad H_A:\beta_{\mathrm{adjacent}}\ne 0$$
+
+Using the standard error for adjacency and the same 128 residual degrees of freedom, we obtain:
+
+$$t=\frac{0.042-0}{0.013}\approx 3.231,\qquad p=2\Pr(T_{128}\geq |3.231|)\approx 0.0016.$$
+
+\rcode{78}{82}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} cc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+t & p \\ 
+\hline \\[-1.8ex] 
+3.23076923 & 0.00156946 \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+Since $p\approx0.0016<0.05$, we reject $H_0$. Holding a precinct's own sign assignment fixed, the data provide statistically significant evidence that Cuccinelli's vote share was higher in precincts next to one assigned signs ($D_{2i}=1$) than in non-adjacent precincts ($D_{2i}=0$). The estimated difference is $4.2$ percentage points on average.
+
+\newpage
+
+\item Interpret the coefficient for the constant term substantively.
+
+\answer We start with a Fairfax County precinct that was neither assigned the signs opposing Terry McAuliffe ($D_{1i}=0$) nor next to a precinct assigned those signs ($D_{2i}=0$). Since both indicators are zero, the model gives us the constant as Ken Cuccinelli's predicted vote share in this reference group.
+
+$$\widehat{\text{vote share}}_i=0.302+0.042(0)+0.042(0)=0.302.$$
+
+This means that, in precincts with no sign assignment of their own or in a neighbouring precinct, the model predicts that Cuccinelli received $30.2\%$ of the vote on average. In a precinct like this with $1{,}000$ votes cast, we would expect about $302$ votes for him.
+
+We use this level of support as the starting point for the comparison in (a). If we keep the neighbouring precincts unassigned ($D_{2i}=0$) and assign signs to the precinct itself ($D_{1i}=1$), we add $4.2$ percentage points to the baseline. The predicted vote share then rises from $30.2\%$ to $34.4\%$, or about $344$ votes for Cuccinelli with the same turnout.
+
+\item Evaluate the model fit for this regression. What does this tell us about the importance of yard signs versus other factors that are not modeled?
+
+\answer We get $R^2=0.094$ from the regression. We multiply $R^2$ and $1-R^2$ by $100$ to get the percentages of variation explained and left unexplained.
+
+\rcode{87}{89}
+
+% Pasted stargazer output
+\par\nobreak
+{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.93}%
+\noindent\makebox[\linewidth][c]{%
+\begin{tabular}{@{\extracolsep{5pt}} cc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Explained & Unexplained \\ 
+\hline \\[-1.8ex] 
+$9.4$ & $90.6$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+}\par}
+\smallskip
+
+Thus, sign assignment and adjacency explain only $9.4\%$ of the variation in Cuccinelli's vote share across the $131$ precincts. The $4.2$-percentage-point differences we found in (a) and (b) could matter in a close election. The remaining $90.6\%$ is unexplained and may reflect differences in prior party support as well as chance.
+\end{enumerate}
+\end{document}
